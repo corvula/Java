@@ -13,7 +13,6 @@ public class DoctorRepository implements Repository<Doctor, String> {
     public Doctor save(Doctor doctor) {
         LoggerUtil.logInfo("Attempt to save doctor: " + (doctor == null ? "null" : doctor.firstName() + " " + doctor.lastName()));
         if (doctor == null) throw new InvalidDataException("doctor: cannot be null");
-        // simple key: firstName+lastName (not for prod)
         String key = doctor.firstName() + "_" + doctor.lastName();
         storage.put(key, doctor);
         LoggerUtil.logInfo("Doctor saved: " + key);
