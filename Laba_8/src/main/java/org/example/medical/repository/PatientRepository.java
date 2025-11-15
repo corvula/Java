@@ -13,7 +13,7 @@ public class PatientRepository implements Repository<Patient, String> {
     public Patient save(Patient patient) {
         LoggerUtil.logInfo("Attempt to save patient: " + (patient == null ? "null" : patient.patientId()));
         if (patient == null) throw new InvalidDataException("patient: cannot be null");
-        // patient record already validates itself
+
         storage.put(patient.patientId(), patient);
         LoggerUtil.logInfo("Patient saved: " + patient.patientId());
         return patient;
